@@ -1,0 +1,37 @@
+article.busqueda {
+    font-family: sans-serif, Arial, Helvetica;
+    color: #FFF;
+    background: rgba(283, 83, 35, 1);
+    padding: 15px 20px;
+    /*width: 350px;*/
+    border: 2px solid #e44817;
+}
+
+@media (max-width:425px) {
+
+    article.busqueda {
+        padding: 10px;
+    }
+
+}
+
+article.busqueda .control-label {
+    font-weight: bold;
+}
+
+article.busqueda .custom-select {
+    font-size: 14px;
+}
+
+article.busqueda .row {
+    text-align: center;
+}
+
+article.busqueda .row .avanzada {
+    padding-top: 5px;
+}
+
+article.busqueda .row .avanzada a {
+    color: #fff;
+    text-decoration: underline;
+}

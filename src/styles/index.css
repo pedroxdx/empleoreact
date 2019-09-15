@@ -1,0 +1,874 @@
+@import url("./fonts.css");
+
+html,
+body {
+  height: 100%;
+  /*font-family: 'open_sansregular', Helvetica, Arial,sans-serif;*/
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-red {
+  color: #dc3545;
+}
+
+.btn-busqueda {
+  color: #fff;
+  background-color: #329d4e;
+  border-color: #329d4e;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-top: -13px;
+  margin-bottom: -11px;
+  margin-right: 10px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-right {
+  float: right;
+}
+
+.img-center {
+  margin: 0 auto;
+}
+
+.control-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+/*************************      HEADER      **************************************/
+
+header {
+  float: left;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+  color: #FFF;
+  width: 100%;
+}
+
+header .container .row {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+header .container .row ul.list-inline>li>a,
+header .container .row ul.list-inline>li>a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+
+header .container .row .principal {
+  text-transform: uppercase;
+}
+
+header .container .row .principal ul.list-inline>li {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+header .container .row .sesion {
+  padding-top: 8px;
+  font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+  text-align: right;
+}
+
+
+/*************************      SECTION  BUSCADOR      **************************************/
+
+section.buscador {
+  background: url('/assets/images/header/header1.jpg') no-repeat center;
+  background-size: cover;
+  font-size: 16px;
+  color: #FFF;
+  min-height: 700px;
+  border-bottom: 2px solid #ed5323;
+}
+
+section.buscador .container .row p.title {
+  margin-top: 10px;
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  text-shadow: 1px 1px #89847c;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+section.buscador .container .row article.busqueda {
+  margin: 30px auto 20px auto;
+}
+
+@media (max-width:425px) {
+
+  section.buscador .container .row p.title {
+    margin-top: 35px;
+    font-size: 25px;
+    text-align: center;
+  }
+
+}
+
+
+/*************************      SECTION  NOSOTROS HEADER      **************************************/
+
+section.nosotros-header {
+  background: url('/assets/images/header/nosotros-header.jpg') no-repeat center;
+  background-size: cover;
+  font-size: 16px;
+  color: #FFF;
+  height: 690px;
+}
+
+section.nosotros-header .container .row p.title {
+  margin-top: 30%;
+  margin-bottom: 15px;
+  font-size: 30px;
+  text-align: center;
+}
+
+section.nosotros-header .container .row p {
+  font-family: sans-serif, Arial, Helvetica;
+  text-align: center;
+}
+
+@media (max-width:425px) {
+
+  section.nosotros-header .container .row p.title {
+    font-size: 25px;
+    text-align: center;
+  }
+
+}
+
+
+/*************************      SECTION EMPLEO IDEAL      **************************************/
+
+section.empleo-ideal {
+  margin-top: 50px;
+}
+
+section.empleo-ideal .container .row .text-right {
+  padding-left: 5%;
+  text-align: right;
+}
+
+section.empleo-ideal .container .row h2 {
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+section.empleo-ideal .container .row p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+section.empleo-ideal .container .row p strong {
+  color: #5f2d79;
+}
+
+@media (max-width:425px) {
+
+  section.empleo-ideal .container .row h2 {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+}
+
+
+/*************************      SECTION  BAR      **************************************/
+
+section.bar {
+  margin-top: 50px;
+  background: url('/assets/images/barman.jpg') no-repeat center;
+  font-size: 16px;
+  color: #FFF;
+  height: 800px;
+  text-align: left;
+}
+
+section.bar .container .row h2 {
+  margin-top: 15%;
+  font-size: 36px;
+}
+
+section.bar .container .row h3 {
+  font-size: 18px;
+}
+
+section.bar .container .row article {
+  margin-top: 30px;
+  width: 450px;
+  padding: 10px;
+}
+
+section.bar .container .row p {
+  margin-bottom: 30px;
+}
+
+@media (max-width:425px) {
+
+  section.bar .container .row h2 {
+    font-size: 28px;
+  }
+
+  section.bar .container .row article {
+    width: 250px;
+    padding: 10px;
+  }
+
+}
+
+/*************************      SECTION  CONTACTO HEADER      **************************************/
+
+section.contacto-header {
+  background: url('/assets/images/header/contacto-header.jpg') no-repeat center;
+  background-size: cover;
+  font-size: 16px;
+  color: #FFF;
+  height: 525px;
+}
+
+/*************************      SECTION  CONTACTO TITLE      **************************************/
+
+section.contacto-title {
+  padding: 10px 0;
+  background-color: #ed5323;
+  font-size: 16px;
+  color: #FFF;
+  text-align: center;
+  font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+}
+
+section.contacto-title .container .row h2 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+/*************************      SECTION  CONTACTO FORM      **************************************/
+
+section.contacto-form {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+section.contacto-form .container .row hr {
+  display: block;
+  padding: 0;
+  border: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+section.contacto-form .container .row article {
+  padding: 30px 50px;
+  font-size: 18px;
+}
+
+section.contacto-form .container .row article p strong {
+  color: #ed5323;
+}
+
+section.contacto-form .container .row article p.title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+@media (max-width:425px) {
+
+  section.contacto-form .container .row article {
+    padding: 30px;
+  }
+
+}
+
+
+/*************************      SECTION PATROCINADORES      **************************************/
+
+section.patrocinadores {
+  margin-top: 10px;
+  text-align: center;
+}
+
+section.patrocinadores .container .row h3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 25px;
+}
+
+section.patrocinadores .container .row img {
+  margin: 20px auto;
+}
+
+
+
+/*************************      SECTION RESTAURANTE      **************************************/
+
+section.restaurante .container .row {
+  margin-top: 50px;
+}
+
+section.restaurante .container .row .text-right {
+  padding-left: 5%;
+  text-align: right;
+}
+
+section.restaurante .container .row .text-left {
+  padding-right: 5%;
+  text-align: left;
+}
+
+section.restaurante .container .row h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+section.restaurante .container .row p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+section.restaurante .container .row p strong {
+  color: #5f2d79;
+}
+
+
+/*************************      SECTION SERVICIOS      **************************************/
+
+section.servicios {
+  margin-top: 10px;
+  background: url('/assets/images/servicios.jpg') no-repeat center;
+  background-size: cover;
+  color: #FFF;
+  /*height: 396px;*/
+  border-top: 10px solid #cf461c;
+}
+
+section.servicios .container .row h2 {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 35px;
+}
+
+section.servicios .container .row h3 {
+  font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+section.servicios .container .row h4 {
+  font-size: 20px;
+}
+
+section.servicios .container .row p {
+  font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+}
+
+section.servicios .container .row .sectores {
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+section.servicios .container .row .sectores .row .img-left {
+  padding-left: 25px;
+  padding-top: 10px;
+}
+
+section.servicios .container .row .sectores .row .text-left {
+  padding-left: 0;
+}
+
+
+@media (max-width:425px) {
+
+  section.servicios .container .row h2 {
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  section.servicios .container .row h3 {
+    font-size: 18px;
+  }
+
+  section.servicios .container .row .sectores {
+    margin-top: 15px;
+  }
+
+  section.servicios .container .row h4 {
+    font-size: 15px;
+  }
+
+  section.servicios .container .row p {
+    font-size: 11px;
+  }
+
+}
+
+
+/*************************      SECTION PERFIL      **************************************/
+
+section.perfil {
+  background: #000;
+  color: #FFF;
+  padding-top: 20px;
+}
+
+section.perfil .container .row {
+  font-size: 16px;
+}
+
+section.perfil .container .row ul.list-inline {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+section.perfil .container .row ul.list-inline li.list-inline-item {
+  margin: 10px 10px 10px 0;
+}
+
+section.perfil .container .row ul.list-inline li.list-inline-item .btn {
+  color: #FFF;
+  font-size: 14px;
+  padding: 6px 40px;
+}
+
+
+/*************************      FOOTER      **************************************/
+
+footer {
+  background: #000;
+  color: #FFF;
+  padding: 20px 0;
+}
+
+footer .container .row {
+  font-size: 16px;
+}
+
+footer .container .row p {
+  font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+  text-align: center;
+  color: #696969;
+}
+
+
+/*************************      SECTION  PAGE-HEADER      **************************************/
+
+section.page-header {
+  padding: 20px 0;
+  background: url('/assets/images/header/empleos-header.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 15px;
+  color: #FFF;
+}
+
+section.page-header .container .row h2 {
+  display: inline-block;
+  font-size: 25px;
+  background-color: #ed5323;
+  border-color: #e44817;
+  padding: 6px 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+section.page-header .container .row ul.list-inline {
+  margin-top: 10px;
+}
+
+section.page-header .container .row ul.list-inline>li {
+  margin-bottom: 10px;
+}
+
+@media (max-width:425px) {
+
+  section.page-header .container .row h2 {
+    font-size: 18px;
+  }
+
+  section.page-header .container .row ul.list-inline .btn {
+    font-size: 10px;
+  }
+
+}
+
+
+/*************************      SECTION  EMPLEOS-BUSCADOR      **************************************/
+
+section.empleos-buscador {
+  min-height: 500px;
+  margin: 30px auto;
+}
+
+/*
+section.empleos-buscador .container .row article.busqueda{
+	font-family: sans-serif, Arial, Helvetica;
+	color: #FFF;
+	background: rgba(283, 83, 35, 1);
+	padding: 15px 20px;
+	border: 2px solid #e44817;
+}
+
+section.empleos-buscador .container .row article.busqueda .row{
+	text-align: center;
+}
+
+section.empleos-buscador .container .row article.busqueda .row .avanzada{
+	padding-top: 5px;
+}
+
+section.empleos-buscador .container .row article.busqueda .row .avanzada a{
+	color: #fff;
+	text-decoration: underline;
+}
+*/
+
+section.empleos-buscador .container .row article.resultados {
+  margin-bottom: 30px;
+}
+
+section.empleos-buscador .container .row article.resultados .row img {
+  float: right;
+}
+
+section.empleos-buscador .container .row article.resultados .row a,
+section.empleos-buscador .container .row article.resultados .row a:hover {
+  color: #ed5323;
+}
+
+section.empleos-buscador .container .row article.resultados .row h3 {
+  margin: 0;
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+section.empleos-buscador .container .row article.resultados .row h4 {
+  margin: 0;
+  font-size: 12px;
+  color: #757575;
+}
+
+section.empleos-buscador .container .row article.resultados .row p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+section.empleos-buscador .container .row article.resultados .row p.salario {
+  font-size: 18px;
+}
+
+section.empleos-buscador .container .row article.resultados .row p.salario strong {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li img {
+  float: left;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li table {
+  display: inline-block;
+  font-size: 12px;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li table td.data {
+  padding: 0 10px;
+}
+
+@media (max-width:425px) {
+
+  section.empleos-buscador .container .row article.resultados:first-child {
+    margin-top: 30px;
+  }
+
+}
+
+
+/*************************      SECTION  EMPLEOS-DETALLES      **************************************/
+
+section.empleos-detalles {
+  margin-top: 20px;
+}
+
+section.empleos-detalles .container .row h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+section.empleos-detalles .container .row h3 {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  margin-top: 50px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+section.empleos-detalles .container .row p {
+  margin-bottom: 20px;
+}
+
+section.empleos-detalles .container .row table {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+section.empleos-detalles .container .row table td.title {
+  display: inline-block;
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  padding-right: 15px;
+  vertical-align: top;
+}
+
+section.empleos-detalles .container .row article {
+  margin-bottom: 50px;
+}
+
+section.empleos-detalles .container .row .ficha {
+  padding: 10px;
+  color: #4f5d73;
+  border: 3px solid #5f2d79;
+  text-align: center;
+}
+
+section.empleos-detalles .container .row .ficha h4 {
+  font-size: 16px;
+}
+
+section.empleos-detalles .container .row .ficha p {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+section.empleos-detalles .container .row .ficha p a,
+section.empleos-detalles .container .row .ficha p a:hover {
+  color: #5f2d79;
+  text-decoration: none;
+}
+
+section.empleos-detalles .container .row .ficha img {
+  margin: 0 auto;
+}
+
+section.empleos-detalles .container .row .postularme {
+  padding: 50px 0;
+  text-align: center;
+}
+
+@media (max-width:425px) {
+
+  section.empleos-detalles .container .row .postularme {
+    padding: 20px 0;
+  }
+
+}
+
+
+/*************************      SECTION  EMPRESA-DETALLES      **************************************/
+
+section.empresa-detalles {
+  margin-bottom: 50px;
+}
+
+section.empresa-detalles .container .row {
+  margin-top: 30px;
+}
+
+section.empresa-detalles .container .row h3 {
+  margin-top: 20px;
+  font-family: 'open_sansitalic', Helvetica, Arial, sans-serif;
+  font-size: 30px;
+  color: #5f2d79;
+}
+
+section.empresa-detalles .container .row h4 {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+section.empresa-detalles .container .row p {
+  font-size: 16px;
+}
+
+section.empresa-detalles .container .row p.data {
+  font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  text-align: justify;
+}
+
+section.empresa-detalles .container .row p.data strong {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+
+section.empresa-detalles .container .row a,
+section.empresa-detalles .container .row a:hover {
+  color: #5f2d79;
+}
+
+section.empresa-detalles .container .row table.sucursales {
+  width: 100%;
+  font-size: 16px;
+}
+
+section.empresa-detalles .container .row table.sucursales th {
+  font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+  border-bottom: #b2b1b1 solid 1px;
+  font-size: 18px;
+}
+
+section.empresa-detalles .container .row table.sucursales td {
+  font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+  padding-top: 15px;
+}
+
+section.empresa-detalles .container .row table.sucursales td strong {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+}
+
+
+/*************************      SECTION  VACANTE-DETALLES      **************************************/
+
+
+section.vacante-detalles {
+  margin: 30px 0;
+}
+
+section.vacante-detalles .container .row {
+  margin-bottom: 20px;
+}
+
+section.vacante-detalles .container .row h3 {
+  margin-top: 0;
+  font-size: 25px;
+  color: #5f2d79;
+}
+
+section.vacante-detalles .container .row p {
+  font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  text-align: justify;
+}
+
+section.vacante-detalles .container .row p strong {
+  font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+}
+
+section.vacante-detalles .container .row p.title {
+  font-family: 'open_sans', Helvetica, Arial, sans-serif;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+section.vacante-detalles .container .row ul.list-inline {
+  margin-top: 20px;
+}
+
+section.vacante-detalles .container .row ul.list-inline li {
+  margin-bottom: 10px;
+}
+
+section.vacante-detalles .container .row ul.list-inline li img {
+  width: 175px;
+  height: 113px;
+}
+
+
+
+
+
+/**
+-------------------------------------------
+THE BOX
+-------------------------------------------
+**/
+.the-box {
+  padding: 15px;
+  margin-bottom: 30px;
+  background: #fff;
+  border: 1px solid #D5DAE0;
+  position: relative;
+}
+
+.the-box.more-padding {
+  padding: 20px;
+}
+
+.the-box.full-width {
+  margin: 0 -15px;
+  border: none;
+}
+
+.the-box.transparent {
+  background: transparent;
+  border: none;
+}
+
+.the-box.full {
+  padding: 0;
+}
+
+.the-box.no-margin {
+  margin: 0;
+}
+
+.the-box.no-border {
+  border: none;
+}
+
+.the-box.rounded {
+  border-radius: 10px;
+}
+
+.the-box .right-action {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  z-index: 9;
+}
+
+h4.small-title {
+  font-size: 16px;
+  color: #656D78;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.bg-dark .small-title,
+.bg-primary .small-title,
+.bg-success .small-title,
+.bg-info .small-title,
+.bg-danger .small-title,
+.bg-warning .small-title {
+  color: #fff;
+}
