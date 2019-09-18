@@ -29,11 +29,11 @@ export const HeaderApp = () => {
             <div className="col-12 col-sm-4 col-md-4 sesion">
               <ul className="list-inline">
                 <li className="list-inline-item">
-                  <a href="#">Registro</a>
+                  <Link to="/registrar-usuario">Registro</Link>
                 </li>
                 <li className="list-inline-item">|</li>
                 <li className="list-inline-item">
-                  <a href="#">Iniciar Sesión</a>
+                  <Link to="/login">Iniciar Sesión</Link>
                 </li>
               </ul>
             </div>
@@ -52,7 +52,7 @@ export const FooterApp = () => {
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12">
               <p>
-                <a href="#">Derechos Reservados Orbitrade 2017</a>
+                <Link to="">Derechos Reservados Orbitrade 2017</Link>
               </p>
             </div>
           </div>
