@@ -4,15 +4,6 @@ import {
 } from "../types";
 
 const initialState = {
-  api: {
-    url: process.env.REACT_APP_API_URL,
-    httpHeaders: {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Basic cGVkcm94ZHhAZ21haWwuY29tOnJlYWxtYWRyaWQxMA=="
-      }
-    }
-  },
   formDataEmpleoBuscador: {
     area: [],
     salario: [],

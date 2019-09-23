@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import { loginUser } from "../store/actions";
 import { ValidationForm, TextInput } from "react-bootstrap4-form-validation";
 import validator from "validator";
+import { ErrorMessage, SuccessMessage } from "./ShowMessagges";
 
 class FormRegistrarUsuario extends Component {
   constructor() {
@@ -9,12 +13,12 @@ class FormRegistrarUsuario extends Component {
     this.initialState = {
       form: {
         name: "",
-        last_name: "",
         email: "",
-        username: "",
         password: "",
-        confirmPassword: ""
-      }
+        c_password: ""
+      },
+      isCreated: false,
+      errors: ""
     };
     this.state = this.initialState;
   }
@@ -27,6 +31,7 @@ class FormRegistrarUsuario extends Component {
 
   handleSubmit = (e, formData, inputs) => {
     e.preventDefault();
+    this.registerUserAPI();
     this.handleReset();
   };
 
@@ -40,116 +45,144 @@ class FormRegistrarUsuario extends Component {
     return value && value === this.state.form.password;
   };
 
+  registerUserAPI = async () => {
+    const response = await axios.post(
+      `${this.props.api.url}/api/register-user`,
+      this.state.form,
+      this.props.api.httpHeaders
+    );
+    this.setState(
+      {
+        isCreated: response.data.isCreated,
+        errors: response.data.errors
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+    this.props.loginUser(response.data.user);
+    console.log(this.props.user);
+  };
+
+  handleMessageErrorClose = () => {
+    this.setState({ errors: "" });
+  };
+
+  handleMessageSuccessClose = () => {
+    this.setState({ isCreated: false });
+  };
+
   render() {
     return (
-      <ValidationForm onSubmit={this.handleSubmit} ref={this.formRef}>
-        <div className="form-group">
-          <label className="control-label" htmlFor="name">
-            Nombre
-          </label>
-          <TextInput
-            name="name"
-            id="name"
-            value={this.state.form.name}
-            onChange={this.handleChange}
-            required
-            errorMessage={{
-              required: "El campo Nombre es Requerido"
-            }}
+      <>
+        {this.state.isCreated ? (
+          <SuccessMessage handleClose={this.handleMessageSuccessClose} />
+        ) : (
+          ""
+        )}
+        {this.state.errors.length !== 0 ? (
+          <ErrorMessage
+            errors={this.state.errors}
+            handleClose={this.handleMessageErrorClose}
           />
-        </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor="last_name">
-            Apellido Paterno
-          </label>
-          <TextInput
-            name="last_name"
-            id="last_name"
-            value={this.state.form.last_name}
-            onChange={this.handleChange}
-            required
-            errorMessage={{
-              required: "El campo Apellido Paterno es Requerido"
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor="email">
-            Email
-          </label>
-          <TextInput
-            type="email"
-            name="email"
-            id="email"
-            value={this.state.form.email}
-            onChange={this.handleChange}
-            validator={validator.isEmail}
-            errorMessage={{
-              validator: "El campo Email no es válido."
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor="username">
-            Usuario
-          </label>
-          <TextInput
-            name="username"
-            id="username"
-            value={this.state.form.username}
-            onChange={this.handleChange}
-            minLength="8"
-            errorMessage={{
-              minLength: "Se requiere un mínimo de {minLength} caracteres"
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor="password">
-            Contraseña
-          </label>
-          <TextInput
-            name="password"
-            id="password"
-            type="password"
-            required
-            pattern="(?=.*[A-Z]).{6,}"
-            value={this.state.form.password}
-            onChange={this.handleChange}
-            errorMessage={{
-              required: "El campo Contraseña es Requerido",
-              pattern:
-                "Se requiere un mínimo de 6 caracteres y debe contener al menos una letra capital."
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor="confirmPassword">
-            Reescribir Contraseña
-          </label>
-          <TextInput
-            name="confirmPassword"
-            id="confirmPassword"
-            type="password"
-            required
-            validator={this.matchPassword}
-            errorMessage={{
-              required: "El campo Reescribir Contraseña es Requerido",
-              validator:
-                "El campo Contraseña y Reescribir Contraseña no son iguales."
-            }}
-            value={this.state.form.confirmPassword}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="form-group text-center">
-          <button type="submit" className="btn btn-primary">
-            Registrar
-          </button>
-        </div>
-      </ValidationForm>
+        ) : (
+          ""
+        )}
+        <ValidationForm onSubmit={this.handleSubmit} ref={this.formRef}>
+          <div className="form-group">
+            <label className="control-label" htmlFor="name">
+              Nombre
+            </label>
+            <TextInput
+              name="name"
+              id="name"
+              value={this.state.form.name}
+              onChange={this.handleChange}
+              required
+              errorMessage={{
+                required: "El campo Nombre es Requerido"
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label" htmlFor="email">
+              Email
+            </label>
+            <TextInput
+              type="email"
+              name="email"
+              id="email"
+              value={this.state.form.email}
+              onChange={this.handleChange}
+              validator={validator.isEmail}
+              errorMessage={{
+                validator: "El campo Email no es válido."
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label" htmlFor="password">
+              Contraseña
+            </label>
+            <TextInput
+              name="password"
+              id="password"
+              type="password"
+              required
+              pattern="(?=.*[A-Z]).{6,}"
+              value={this.state.form.password}
+              onChange={this.handleChange}
+              errorMessage={{
+                required: "El campo Contraseña es Requerido",
+                pattern:
+                  "Se requiere un mínimo de 6 caracteres y debe contener al menos una letra capital."
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label" htmlFor="c_password">
+              Reescribir Contraseña
+            </label>
+            <TextInput
+              name="c_password"
+              id="c_password"
+              type="password"
+              required
+              validator={this.matchPassword}
+              errorMessage={{
+                required: "El campo Reescribir Contraseña es Requerido",
+                validator:
+                  "El campo Contraseña y Reescribir Contraseña no son iguales."
+              }}
+              value={this.state.form.c_password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group text-center">
+            <button type="submit" className="btn btn-primary">
+              Registrar
+            </button>
+          </div>
+        </ValidationForm>
+      </>
     );
   }
 }
 
-export default FormRegistrarUsuario;
+const mapStateToProps = state => {
+  return {
+    api: state.appReducer.api,
+    user: state.userReducer.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: user => dispatch(loginUser(user))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FormRegistrarUsuario);

@@ -12,16 +12,18 @@ use App\UnidadTemporal;
 use App\Estado;
 use App\Salario;
 
-class EmpleosController extends Controller
+class EmpleoController extends Controller
 {
+    /*
     public function __construct()
     {
         $this->middleware('auth.basic');
     }
-
+    */
+    
     public function index() 
     {
-        return $this->createEmpleosData();
+        return response()->json($this->createEmpleosData());
     }
 
     public function FormEmpleoBuscador() 
@@ -38,7 +40,7 @@ class EmpleosController extends Controller
         $form['estado'] = Estado::select('id', 'nombre')
                                     ->get();
 
-        return $form;
+        return response()->json($form);
     }
 
     public function SearchEmployment(Request $request)
@@ -63,7 +65,7 @@ class EmpleosController extends Controller
             $conditions .= " AND em.estado = " . $post["form"]["estado"];
         }
 
-        return $this->createEmpleosData($conditions);
+        return response()->json($this->createEmpleosData($conditions));
     }
 
     protected function createEmpleosData($conditions="")

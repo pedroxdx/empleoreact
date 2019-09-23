@@ -1,6 +1,7 @@
 import {
   GET_FORM_DATA_EMPLEO_BUSCADOR,
-  GET_EMPLEOS_DISPONIBLES
+  GET_EMPLEOS_DISPONIBLES,
+  LOGIN_USER
 } from "./types";
 import axios from "axios";
 
@@ -52,4 +53,9 @@ export const getFormEmpleoBuscador = formDataEmpleoBuscador => ({
 export const getEmpleosDisponibles = empleosDisponibles => ({
   type: GET_EMPLEOS_DISPONIBLES,
   empleosDisponibles
+});
+
+export const loginUser = user => ({
+  type: LOGIN_USER,
+  user
 });

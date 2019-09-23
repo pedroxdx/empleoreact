@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import { loginUser } from "../store/actions";
+import { ErrorMessage } from "./ShowMessagges";
 import {
   ValidationForm,
   TextInput,
   Checkbox
 } from "react-bootstrap4-form-validation";
+import validator from "validator";
 import { Link } from "react-router-dom";
 
 import "../styles/FormLogIn.css";
@@ -14,10 +19,12 @@ class FormLoginIn extends Component {
     this.formRef = React.createRef();
     this.initialState = {
       form: {
-        username: "",
+        email: "",
         password: "",
         rememberMe: false
-      }
+      },
+      errors: "",
+      isLogging: true
     };
     this.state = this.initialState;
   }
@@ -36,31 +43,66 @@ class FormLoginIn extends Component {
 
   handleSubmit = (e, formData, inputs) => {
     e.preventDefault();
+    this.loginUserAPI();
     this.handleReset();
   };
 
   handleReset = () => {
     let formRef = this.formRef.current;
-    this.setState(this.initialState);
+    this.setState({
+      form: this.initialState.form
+    });
     formRef.resetValidationState(true);
+  };
+
+  loginUserAPI = async () => {
+    const response = await axios.post(
+      `${this.props.api.url}/api/login`,
+      this.state.form,
+      this.props.api.httpHeaders
+    );
+    this.setState(
+      {
+        isLogging: response.data.isLogging,
+        errors: response.data.errors
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+    this.props.loginUser(response.data.user);
+    console.log(this.props.user);
+  };
+
+  handleMessageErrorClose = () => {
+    this.setState({ errors: "" });
   };
 
   render() {
     return (
       <>
+        {this.state.errors.length !== 0 ? (
+          <ErrorMessage
+            errors={this.state.errors}
+            handleClose={this.handleMessageErrorClose}
+          />
+        ) : (
+          ""
+        )}
         <ValidationForm onSubmit={this.handleSubmit} ref={this.formRef}>
           <div className="form-group">
-            <label className="control-label" htmlFor="username">
-              Usuario
+            <label className="control-label" htmlFor="email">
+              Email
             </label>
             <TextInput
-              name="username"
-              id="username"
-              value={this.state.form.username}
+              type="email"
+              name="email"
+              id="email"
+              value={this.state.form.email}
               onChange={this.handleChange}
-              minLength="8"
+              validator={validator.isEmail}
               errorMessage={{
-                minLength: "Se requiere un mínimo de {minLength} caracteres"
+                validator: "El campo Email no es válido."
               }}
             />
           </div>
@@ -73,13 +115,10 @@ class FormLoginIn extends Component {
               id="password"
               type="password"
               required
-              pattern="(?=.*[A-Z]).{6,}"
               value={this.state.form.password}
               onChange={this.handleChange}
               errorMessage={{
-                required: "El campo Contraseña es Requerido",
-                pattern:
-                  "Se requiere un mínimo de 6 caracteres y debe contener al menos una letra capital."
+                required: "El campo Contraseña es Requerido"
               }}
             />
           </div>
@@ -104,4 +143,20 @@ class FormLoginIn extends Component {
   }
 }
 
-export default FormLoginIn;
+const mapStateToProps = state => {
+  return {
+    api: state.appReducer.api,
+    user: state.userReducer.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: user => dispatch(loginUser(user))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FormLoginIn);

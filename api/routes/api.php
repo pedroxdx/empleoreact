@@ -18,8 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/empleos', 'EmpleosController@index');
+Route::get('/empleos', 'EmpleoController@index');
 
-Route::get('/form-empleo-buscador', 'EmpleosController@FormEmpleoBuscador');
+Route::get('/form-empleo-buscador', 'EmpleoController@FormEmpleoBuscador');
 
-Route::post('/buscar-empleo', 'EmpleosController@SearchEmployment');
+Route::post('/buscar-empleo', 'EmpleoController@SearchEmployment');
+
+Route::post('/login', 'UserController@login');
+
+Route::post('/register-user', 'UserController@register');

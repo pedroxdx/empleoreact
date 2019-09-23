@@ -243,7 +243,7 @@ class FormEmpleoBuscador extends Component {
 
 const mapStateToProps = state => {
   return {
-    api: state.empleoReducer.api,
+    api: state.appReducer.api,
     formDataEmpleoBuscador: state.empleoReducer.formDataEmpleoBuscador,
     formEmpleoBuscador: state.empleoReducer.formEmpleoBuscador
   };

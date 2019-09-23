@@ -24,7 +24,7 @@ class EmpleosDisponibles extends Component {
 
 const mapStateToProps = state => {
   return {
-    api: state.empleoReducer.api,
+    api: state.appReducer.api,
     formEmpleoBuscador: state.empleoReducer.formEmpleoBuscador,
     empleosDisponibles: state.empleoReducer.empleosDisponibles
   };
