@@ -6,7 +6,7 @@ export const SuccessMessage = props => {
       className="alert alert-success alert-dismissible fade show"
       role="alert"
     >
-      <strong>El Usuario</strong> se creo correctamente.
+      <p>{props.message}</p>
       <button
         type="button"
         className="close"

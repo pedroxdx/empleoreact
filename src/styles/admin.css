@@ -1,0 +1,622 @@
+@import url("./fonts.css");
+
+html,
+body {
+    height: 100%;
+    /*font-family: 'open_sansregular', Helvetica, Arial,sans-serif;*/
+    font-family: Helvetica, Arial, sans-serif;
+    padding-top: 0;
+    color: #000;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.btn-busqueda {
+    color: #fff;
+    background-color: #329d4e;
+    border-color: #329d4e;
+}
+
+hr {
+    display: block;
+    padding: 0;
+    border: 1px solid #ccc;
+    margin: 1em 0;
+
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-right {
+    float: right;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+/*************************      HEADER      **************************************/
+
+header {
+    float: left;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+    color: #FFF;
+    width: 100%;
+}
+
+header .container .row {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+header .container .row .principal {
+    text-transform: uppercase;
+}
+
+header .container .row .principal ul.list-inline>li {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+header .container .row .principal ul.list-inline>li>a,
+header .container .row .principal ul.list-inline>li>a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+header .container .row .sesion {
+    font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+    text-align: right;
+}
+
+
+/*************************      SECTION  EMPLEOS-HEADER      **************************************/
+
+section.admin-header {
+    padding: 20px 0;
+    background: url('/assets/images/header/empleos-header.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 15px;
+    color: #FFF;
+}
+
+section.admin-header .container .row h2 {
+    display: inline-block;
+    font-size: 25px;
+    background-color: #ed5323;
+    border-color: #e44817;
+    padding: 6px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+section.admin-header .container .row ul.list-inline {
+    margin-top: 10px;
+}
+
+section.admin-header .container .row ul.list-inline>li {
+    margin-bottom: 10px;
+}
+
+@media (max-width:425px) {
+
+    section.admin-header .container .row h2 {
+        font-size: 18px;
+    }
+
+    section.admin-header .container .row ul.list-inline .btn {
+        font-size: 10px;
+    }
+
+}
+
+/*************************      SECTION ADMIN     **************************************/
+
+section.admin {
+    padding: 30px 0;
+}
+
+section.admin .container .row h1 {
+    font-size: 18px;
+}
+
+section.admin .container .row .title {
+    font-size: 16px;
+    color: #656D78;
+}
+
+section.admin .container .row .table-box {
+    margin: 30px 0;
+}
+
+section.admin .img-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+section.admin img.close-delete-foto {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    cursor: pointer;
+}
+
+
+/*************************      SECTION  EMPLEOS-HEADER      **************************************/
+
+section.empleos-header {
+    padding: 20px 0;
+    background: url('/assets/images/header/empleos-header.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 15px;
+    color: #FFF;
+}
+
+section.empleos-header .container .row h2 {
+    display: inline-block;
+    font-size: 25px;
+    background-color: #ed5323;
+    border-color: #e44817;
+    padding: 6px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+section.empleos-header .container .row ul.list-inline {
+    margin-top: 10px;
+}
+
+section.empleos-header .container .row ul.list-inline>li {
+    margin-bottom: 10px;
+}
+
+@media (max-width:425px) {
+
+    section.empleos-header .container .row h2 {
+        font-size: 18px;
+    }
+
+    section.empleos-header .container .row ul.list-inline .btn {
+        font-size: 10px;
+    }
+
+}
+
+
+/*************************      SECTION  EMPLEOS-BUSCADOR      **************************************/
+
+section.empleos-buscador {
+    margin: 30px auto;
+}
+
+section.empleos-buscador .container .row article.busqueda {
+    font-family: sans-serif, Arial, Helvetica;
+    color: #FFF;
+    background: rgba(283, 83, 35, 1);
+    padding: 15px 20px;
+    border: 2px solid #e44817;
+}
+
+section.empleos-buscador .container .row article.busqueda .row {
+    text-align: center;
+}
+
+section.empleos-buscador .container .row article.busqueda .row .avanzada {
+    padding-top: 5px;
+}
+
+section.empleos-buscador .container .row article.busqueda .row .avanzada a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+section.empleos-buscador .container .row article.resultados {
+    margin-bottom: 30px;
+}
+
+section.empleos-buscador .container .row article.resultados .row img {
+    float: right;
+}
+
+section.empleos-buscador .container .row article.resultados .row a,
+section.empleos-buscador .container .row article.resultados .row a:hover {
+    color: #ed5323;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled li a,
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled li a:hover {
+    color: #fff;
+}
+
+section.empleos-buscador .container .row article.resultados .row h3 {
+    margin: 0;
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+section.empleos-buscador .container .row article.resultados .row h4 {
+    margin: 0;
+    font-size: 12px;
+    color: #757575;
+}
+
+section.empleos-buscador .container .row article.resultados .row h5 {
+    margin: 0;
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: #566dfc;
+}
+
+section.empleos-buscador .container .row article.resultados .row p {
+    font-size: 14px;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li img {
+    float: left;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li table {
+    display: inline-block;
+    font-size: 12px;
+}
+
+section.empleos-buscador .container .row article.resultados .row ul.list-unstyled>li table td.data {
+    padding: 0 10px;
+}
+
+@media (max-width:425px) {
+
+    section.empleos-buscador .container .row article.resultados:first-child {
+        margin-top: 30px;
+    }
+
+}
+
+
+/*************************      SECTION  EMPLEOS-DETALLES      **************************************/
+
+section.empleos-detalles {
+    margin-top: 20px;
+}
+
+section.empleos-detalles .container .row h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+section.empleos-detalles .container .row h3 {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    margin-top: 50px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+section.empleos-detalles .container .row p {
+    margin-bottom: 20px;
+}
+
+section.empleos-detalles .container .row table {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+section.empleos-detalles .container .row table td.title {
+    display: inline-block;
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding-right: 15px;
+    vertical-align: top;
+}
+
+section.empleos-detalles .container .row article {
+    margin-bottom: 50px;
+}
+
+section.empleos-detalles .container .row .ficha {
+    padding: 10px;
+    color: #4f5d73;
+    border: 3px solid #5f2d79;
+    text-align: center;
+}
+
+section.empleos-detalles .container .row .ficha h4 {
+    font-size: 16px;
+}
+
+section.empleos-detalles .container .row .ficha p {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+section.empleos-detalles .container .row .ficha p a,
+section.empleos-detalles .container .row .ficha p a:hover {
+    color: #5f2d79;
+    text-decoration: none;
+}
+
+section.empleos-detalles .container .row .ficha img {
+    margin: 0 auto;
+}
+
+section.empleos-detalles .container .row .postularme {
+    padding: 50px 0;
+    text-align: center;
+}
+
+@media (max-width:425px) {
+
+    section.empleos-detalles .container .row .postularme {
+        padding: 20px 0;
+    }
+
+}
+
+
+/*************************      SECTION  EMPRESA-DETALLES      **************************************/
+
+section.empresa-detalles {
+    margin-bottom: 50px;
+}
+
+section.empresa-detalles .container .row {
+    margin-top: 30px;
+}
+
+section.empresa-detalles .container .row h3 {
+    margin-top: 20px;
+    font-family: 'open_sansitalic', Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    color: #5f2d79;
+}
+
+section.empresa-detalles .container .row h4 {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+section.empresa-detalles .container .row p {
+    font-size: 16px;
+}
+
+section.empresa-detalles .container .row p.data {
+    font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    text-align: justify;
+}
+
+section.empresa-detalles .container .row p.data strong {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    text-align: left;
+}
+
+section.empresa-detalles .container .row a,
+section.empresa-detalles .container .row a:hover {
+    color: #5f2d79;
+}
+
+section.empresa-detalles .container .row table.sucursales {
+    width: 100%;
+    font-size: 16px;
+}
+
+section.empresa-detalles .container .row table.sucursales th {
+    font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+    border-bottom: #b2b1b1 solid 1px;
+    font-size: 18px;
+}
+
+section.empresa-detalles .container .row table.sucursales td {
+    font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+    padding-top: 15px;
+}
+
+section.empresa-detalles .container .row table.sucursales td strong {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+}
+
+
+/*************************      SECTION  VACANTE-DETALLES      **************************************/
+
+
+section.vacante-detalles {
+    margin: 30px 0;
+}
+
+section.vacante-detalles .container .row {
+    margin-bottom: 20px;
+}
+
+section.vacante-detalles .container .row h3 {
+    margin-top: 0;
+    font-size: 25px;
+    color: #5f2d79;
+}
+
+section.vacante-detalles .container .row p {
+    font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: justify;
+}
+
+section.vacante-detalles .container .row p strong {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+}
+
+section.vacante-detalles .container .row p.title {
+    font-family: 'open_sans', Helvetica, Arial, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+section.vacante-detalles .container .row ul.list-inline {
+    margin-top: 20px;
+}
+
+section.vacante-detalles .container .row ul.list-inline li {
+    margin-bottom: 10px;
+}
+
+section.vacante-detalles .container .row ul.list-inline li img {
+    width: 175px;
+    height: 113px;
+}
+
+section.vacante-detalles .container .row .comentarios {
+    margin-bottom: 50px;
+    border: solid 1px;
+    padding: 20px;
+}
+
+section.vacante-detalles .container .row .comentarios img.delete-comentario {
+    float: right;
+    cursor: pointer;
+}
+
+section.vacante-detalles .container .row .comentarios h3 {
+    font-family: 'open_sans', Helvetica, Arial, sans-serif;
+    color: #FF0000;
+    font-size: 22px;
+}
+
+section.vacante-detalles .container .row .comentarios h4 {
+    font-family: 'open_sanslight', Helvetica, Arial, sans-serif;
+    color: #0000FF;
+    font-size: 18px;
+}
+
+section.vacante-detalles .container .row .comentarios p {
+    font-family: 'open_sans', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+section.vacante-detalles .container .row .comentarios ul.list-inline {
+    margin-top: 0;
+}
+
+section.vacante-detalles .container .row .comentarios ul.list-inline li h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+section.vacante-detalles .container .row .comentarios ul.list-inline li img {
+    width: 32px;
+    height: 32px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica {
+    margin-top: 30px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica .item {
+    border: solid 1px;
+    padding: 20px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica ul.list-inline {
+    margin-bottom: 0;
+}
+
+section.vacante-detalles .container .row .comentarios .replica ul.list-inline li {
+    margin-bottom: 0;
+}
+
+section.vacante-detalles .container .row .comentarios .replica h3 {
+    font-size: 18px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica h4 {
+    font-size: 16px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica p {
+    font-size: 14px;
+}
+
+section.vacante-detalles .container .row .comentarios .replica .btn-primary {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
+}
+
+section.vacante-detalles .container .row .comentarios .replica img.delete-replica {
+    float: right;
+    cursor: pointer;
+}
+
+/*************************      SECTION  ADMIN-CANDIDATOS      **************************************/
+
+section.admin-candidatos {
+    margin: 50px 0;
+}
+
+section.admin-candidatos .container .row h2 {
+    font-family: 'open_sansbold', Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    color: #4b4b4b;
+}
+
+section.admin-candidatos .container .row h2 strong {
+    color: #ed5323;
+    text-decoration: underline;
+}
+
+section.admin-candidatos .container .row h3 {
+    font-size: 20px;
+    color: #4b4b4b;
+    margin-bottom: 20px;
+}
+
+section.admin-candidatos .container .row .box-data {
+    background-color: #F6F6F6;
+    border: #EEEEEE solid 1px;
+    border-radius: 20px;
+}
+
+
+
+/*************************      FOOTER      **************************************/
+
+footer {
+    background: #000;
+    color: #FFF;
+    padding: 20px 0;
+    margin-top: 0;
+}
+
+footer .container .row {
+    font-size: 16px;
+}
+
+footer .container .row p {
+    font-family: 'open_sanslightitalic', Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #696969;
+}

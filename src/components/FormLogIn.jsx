@@ -61,16 +61,19 @@ class FormLoginIn extends Component {
       this.state.form,
       this.props.api.httpHeaders
     );
+
     this.setState(
       {
         isLogging: response.data.isLogging,
         errors: response.data.errors
       },
       () => {
-        console.log(this.state);
+        this.props.loginUser(response.data.user);
+        if (response.data.isLogging) {
+          this.props.history.push("/admin/dashboard");
+        }
       }
     );
-    this.props.loginUser(response.data.user);
     console.log(this.props.user);
   };
 

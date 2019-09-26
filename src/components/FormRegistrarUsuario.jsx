@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { loginUser } from "../store/actions";
 import { ValidationForm, TextInput } from "react-bootstrap4-form-validation";
 import validator from "validator";
 import { ErrorMessage, SuccessMessage } from "./ShowMessagges";
@@ -46,22 +45,24 @@ class FormRegistrarUsuario extends Component {
   };
 
   registerUserAPI = async () => {
-    const response = await axios.post(
-      `${this.props.api.url}/api/register-user`,
-      this.state.form,
-      this.props.api.httpHeaders
-    );
-    this.setState(
-      {
-        isCreated: response.data.isCreated,
-        errors: response.data.errors
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
-    this.props.loginUser(response.data.user);
-    console.log(this.props.user);
+    try {
+      const response = await axios.post(
+        `${this.props.api.url}/api/register-user`,
+        this.state.form,
+        this.props.api.httpHeaders
+      );
+      this.setState(
+        {
+          isCreated: response.data.isCreated,
+          errors: response.data.errors
+        },
+        () => {
+          console.log(this.state);
+        }
+      );
+    } catch (err) {
+      throw new Error(err);
+    }
   };
 
   handleMessageErrorClose = () => {
@@ -76,7 +77,10 @@ class FormRegistrarUsuario extends Component {
     return (
       <>
         {this.state.isCreated ? (
-          <SuccessMessage handleClose={this.handleMessageSuccessClose} />
+          <SuccessMessage
+            message="El Usuario se creo correctamente."
+            handleClose={this.handleMessageSuccessClose}
+          />
         ) : (
           ""
         )}
@@ -171,18 +175,8 @@ class FormRegistrarUsuario extends Component {
 
 const mapStateToProps = state => {
   return {
-    api: state.appReducer.api,
-    user: state.userReducer.user
+    api: state.appReducer.api
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loginUser: user => dispatch(loginUser(user))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FormRegistrarUsuario);
+export default connect(mapStateToProps)(FormRegistrarUsuario);

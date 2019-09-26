@@ -16,12 +16,16 @@ export const getFormEmpleoBuscadorAPI = api => {
 const saveFormEmpleoBuscadorAPI = async api => {
   if (localStorage.getItem("formEmpleoBuscador") === null) {
     console.log("API");
-    const response = await axios.get(
-      `${api.url}/api/form-empleo-buscador`,
-      api.httpHeaders
-    );
-    localStorage.setItem("formEmpleoBuscador", JSON.stringify(response.data));
-    return response.data;
+    try {
+      let response = await axios.get(
+        `${api.url}/api/form-empleo-buscador`,
+        api.httpHeaders
+      );
+      localStorage.setItem("formEmpleoBuscador", JSON.stringify(response.data));
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
   } else {
     console.log("DB");
     let data = localStorage.getItem("formEmpleoBuscador");
@@ -41,6 +45,29 @@ export const getEmpleosDisponiblesAPI = (api, formEmpleoBuscador) => {
       )
       .then(response => {
         dispatch(getEmpleosDisponibles(response.data));
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  };
+};
+
+export const isLogginAPI = (api, history) => {
+  return dispatch => {
+    let token = localStorage.getItem("user_token");
+    axios
+      .get(`${api.url}/api/user`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        dispatch(loginUser(response.data));
+      })
+      .catch(err => {
+        history.push("/login");
+        //throw new Error(err);
       });
   };
 };
@@ -55,7 +82,10 @@ export const getEmpleosDisponibles = empleosDisponibles => ({
   empleosDisponibles
 });
 
-export const loginUser = user => ({
-  type: LOGIN_USER,
-  user
-});
+export const loginUser = user => {
+  localStorage.setItem("user_token", user.api_token);
+  return {
+    type: LOGIN_USER,
+    user
+  };
+};
