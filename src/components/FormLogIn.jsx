@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { loginUser } from "../store/actions";
 import { ErrorMessage } from "./ShowMessagges";
 import {
   ValidationForm,
@@ -11,9 +10,13 @@ import {
 import validator from "validator";
 import { Link } from "react-router-dom";
 
+import { AuthContext } from "../context/auth";
+
 import "../styles/FormLogIn.css";
 
 class FormLoginIn extends Component {
+  static contextType = AuthContext;
+
   constructor() {
     super();
     this.formRef = React.createRef();
@@ -55,26 +58,29 @@ class FormLoginIn extends Component {
     formRef.resetValidationState(true);
   };
 
-  loginUserAPI = async () => {
-    const response = await axios.post(
-      `${this.props.api.url}/api/login`,
-      this.state.form,
-      this.props.api.httpHeaders
-    );
-
-    this.setState(
-      {
-        isLogging: response.data.isLogging,
-        errors: response.data.errors
-      },
-      () => {
-        this.props.loginUser(response.data.user);
-        if (response.data.isLogging) {
+  loginUserAPI = () => {
+    axios
+      .post(
+        `${this.props.api.url}/api/login`,
+        this.state.form,
+        this.props.api.httpHeaders
+      )
+      .then(response => {
+        if (response.status === 200 && response.data.isLogging) {
+          this.context.setAuthTokens(response.data.user);
           this.props.history.push("/admin/dashboard");
         }
-      }
-    );
-    console.log(this.props.user);
+        this.setState({
+          isLogging: response.data.isLogging,
+          errors: response.data.errors
+        });
+      })
+      .catch(e => {
+        this.setState({
+          isLogging: false,
+          errors: e
+        });
+      });
   };
 
   handleMessageErrorClose = () => {
@@ -148,18 +154,8 @@ class FormLoginIn extends Component {
 
 const mapStateToProps = state => {
   return {
-    api: state.appReducer.api,
-    user: state.userReducer.user
+    api: state.appReducer.api
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loginUser: user => dispatch(loginUser(user))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FormLoginIn);
+export default connect(mapStateToProps)(FormLoginIn);

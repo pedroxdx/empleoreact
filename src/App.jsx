@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,23 +10,35 @@ import Contact from "./pages/Contact";
 import RegistrarUsuario from "./pages/RegistrarUsuario";
 import LogIn from "./pages/LogIn";
 import RecuperarPassword from "./pages/RecuperarPassword";
-import Dashboard from "./pages/admin/Dashboard";
-import Profile from "./pages/admin/Profile";
+
+import PanelApp from "./admin/pages/PanelApp";
+
+import { AuthContext } from "./context/auth";
 
 function App() {
+  const [authTokens, setAuthTokens] = useState();
+
+  const setTokens = data => {
+    localStorage.setItem("auth", JSON.stringify(data));
+    setAuthTokens(data);
+  };
+
   return (
     <>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/empleos" component={Empleos} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/registrar-usuario" component={RegistrarUsuario} />
-        <Route exact path="/login" component={LogIn} />
-        <Route exact path="/recuperar-password" component={RecuperarPassword} />
-        <Route path="/admin/dashboard" component={Dashboard} />
-        <Route path="/admin/profile" component={Profile} />
-      </Switch>
+      <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/empleos" component={Empleos} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/registrar-usuario" component={RegistrarUsuario} />
+            <Route path="/login" component={LogIn} />
+            <Route path="/recuperar-password" component={RecuperarPassword} />
+            <PrivateRoute path="/admin" component={PanelApp} />
+          </Switch>
+        </Router>
+      </AuthContext.Provider>
     </>
   );
 }
