@@ -5,7 +5,8 @@ const ScrollTop = () => {
   const { setAuthTokens } = useAuth();
 
   const logOut = () => {
-    setAuthTokens();
+    localStorage.removeItem("auth");
+    setAuthTokens(null);
   };
 
   return (

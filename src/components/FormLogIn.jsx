@@ -58,29 +58,32 @@ class FormLoginIn extends Component {
     formRef.resetValidationState(true);
   };
 
-  loginUserAPI = () => {
-    axios
-      .post(
-        `${this.props.api.url}/api/login`,
-        this.state.form,
-        this.props.api.httpHeaders
-      )
-      .then(response => {
-        if (response.status === 200 && response.data.isLogging) {
-          this.context.setAuthTokens(response.data.user);
-          this.props.history.push("/admin/dashboard");
-        }
-        this.setState({
+  loginUserAPI = async () => {
+    const response = await axios.post(
+      `${this.props.api.url}/api/login`,
+      this.state.form,
+      this.props.api.httpHeaders
+    );
+
+    try {
+      this.setState(
+        {
           isLogging: response.data.isLogging,
           errors: response.data.errors
-        });
-      })
-      .catch(e => {
-        this.setState({
-          isLogging: false,
-          errors: e
-        });
+        },
+        () => {
+          if (response.status === 200 && response.data.isLogging) {
+            this.context.setAuthTokens(response.data.user);
+            this.props.history.push("/admin/dashboard");
+          }
+        }
+      );
+    } catch (e) {
+      this.setState({
+        isLogging: false,
+        errors: e
       });
+    }
   };
 
   handleMessageErrorClose = () => {

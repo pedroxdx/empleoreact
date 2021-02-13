@@ -11,12 +11,14 @@ import RegistrarUsuario from "./pages/RegistrarUsuario";
 import LogIn from "./pages/LogIn";
 import RecuperarPassword from "./pages/RecuperarPassword";
 
-import PanelApp from "./admin/pages/PanelApp";
+import Admin from "./admin/pages/Admin";
 
 import { AuthContext } from "./context/auth";
 
 function App() {
-  const [authTokens, setAuthTokens] = useState();
+  const [authTokens, setAuthTokens] = useState(
+    JSON.parse(localStorage.getItem("auth"))
+  );
 
   const setTokens = data => {
     localStorage.setItem("auth", JSON.stringify(data));
@@ -25,7 +27,12 @@ function App() {
 
   return (
     <>
-      <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+      <AuthContext.Provider
+        value={{
+          authTokens,
+          setAuthTokens: setTokens
+        }}
+      >
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -35,7 +42,7 @@ function App() {
             <Route path="/registrar-usuario" component={RegistrarUsuario} />
             <Route path="/login" component={LogIn} />
             <Route path="/recuperar-password" component={RecuperarPassword} />
-            <PrivateRoute path="/admin" component={PanelApp} />
+            <PrivateRoute path="/admin" component={Admin} />
           </Switch>
         </Router>
       </AuthContext.Provider>

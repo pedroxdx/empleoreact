@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
-
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../store/actions";
 
 import "../styles/sb-admin-2.css";
 import "../styles/fontawesome-free/css/all.min.css";
@@ -15,14 +12,7 @@ import ScrollTop from "../components/ScrollTop";
 import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 
-const PanelApp = props => {
-  const dispatch = useDispatch();
-  const api = useSelector(state => state.appReducer.api);
-
-  useEffect(() => {
-    //dispatch(actions.isLogginAPI(api, props.history));
-  });
-
+const Admin = props => {
   return (
     <>
       <div id="wrapper">
@@ -43,4 +33,4 @@ const PanelApp = props => {
   );
 };
 
-export default PanelApp;
+export default Admin;

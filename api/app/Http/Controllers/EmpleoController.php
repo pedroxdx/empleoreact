@@ -4,26 +4,35 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Empresa;
 use App\OfertaEmpleo;
 use App\Area;
 use App\Disponibilidad;
 use App\Moneda;
 use App\UnidadTemporal;
 use App\Estado;
+use App\Ciudad;
 use App\Salario;
+use App\Sucursal;
 
 class EmpleoController extends Controller
 {
-    /*
+
     public function __construct()
     {
         $this->middleware('auth.basic');
     }
-    */
     
     public function index() 
     {
         return response()->json($this->createEmpleosData());
+    }
+
+    public function empresaById($id) 
+    {
+        $empresa = Empresa::findOrFail($id);
+
+        return response()->json($empresa);
     }
 
     public function FormEmpleoBuscador() 
@@ -39,8 +48,57 @@ class EmpleoController extends Controller
                                                 ->get();
         $form['estado'] = Estado::select('id', 'nombre')
                                     ->get();
-
+        /*
+        $form['ciudad'] = Ciudad::select('id', 'nombre')
+                                    ->where('estado_id', 31)
+                                    ->get();
+        */
+        $form['ciudad'] = [];
+        
         return response()->json($form);
+    }
+
+    public function employmentByCompany($id)
+    {
+        $employments = OfertaEmpleo::selectRaw('
+                        id, 
+                        DATE_FORMAT(log, "%d-%m-%Y") AS fecha,
+                        puesto,
+                        vacantes,
+                        contratados,
+                        DATE_FORMAT(vigencia, "%d-%m-%Y") AS vigencia,
+                        publicar')
+                        ->where("empresa", $id)
+                        ->orderBy("log", "desc")
+                        ->get();
+
+        return response()->json($employments);
+    }
+
+    public function employmentById($id)
+    {
+        $ofertas = OfertaEmpleo::findOrFail($id);
+
+        return response()->json($ofertas);
+    }
+
+    public function ciudadesByEmpresa($id)
+    {
+        $ciudades = Ciudad::select('id', 'nombre')
+                            ->where('estado_id', $id)
+                            ->get();
+
+        return response()->json($ciudades);
+    }
+
+    public function createEmployment(Request $request)
+    {
+        $oferta = new OfertaEmpleo;
+        $oferta->empresa = $request->input('empresa');
+        $sucursal = $request->input('sucursal');
+        if($sucursal) {
+            $oferta->sucursal = $sucursal;
+        }
     }
 
     public function SearchEmployment(Request $request)

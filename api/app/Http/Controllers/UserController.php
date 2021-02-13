@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use App\Empresa;
 
 class UserController extends Controller
 {
@@ -23,7 +24,9 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $post['email'], 'password' => $post['password']])) {
             $data["isLogging"] = true;
-            $data["user"] = Auth::user();
+            $user = Auth::user();
+            $data["user"] = $user;
+            $data["empresa"] = Empresa::findOrFail($user->empresa);
         } else {
             $data["errors"] = "Username or Password Incorrect";
         }
@@ -39,11 +42,12 @@ class UserController extends Controller
     public function register(Request $request) 
     { 
         $data["user"] = "";
-        $data["isCreated"] = true;
+        $data["isLogging"] = true;
         $data["errors"] = "";
 
         $validator = Validator::make($request->all(), [ 
-            'name' => 'required', 
+            'name' => 'required',
+            'empresa' => 'required', 
             'email' => 'required|email|unique:users', 
             'password' => 'required', 
             'c_password' => 'required|same:password', 
@@ -57,12 +61,16 @@ class UserController extends Controller
         }
 
         $input = $request->all(); 
-        $data["user"] = User::create([
+        $user = User::create([
             'name' => $input['name'],
+            'empresa' => $input['empresa'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'api_token' => hash('sha256', Str::random(60)),
         ]);
+
+        $data["user"] = $user;
+        $data["empresa"] = Empresa::findOrFail($user->empresa);
         
         return response()->json($data, $this->successStatus); 
     }
